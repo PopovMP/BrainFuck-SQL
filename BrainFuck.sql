@@ -1,18 +1,18 @@
 -- Brain Fuck interpreter in SQL
 
-DECLARE @Code  VARCHAR(MAX) = ', [>,] < [.<]'
+DECLARE @Code  VARCHAR(MAX) = ', [>,] < [.<]';
 DECLARE @Input VARCHAR(MAX) = '!dlroW olleH';
 
 -- Creates a "BrainFuck" DataBase.
 -- CREATE DATABASE BrainFuck;
 
--- Creates the Source code table
+-- Creates the Source code table.
 DECLARE @CodeTable TABLE (
     [Id]      INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     [Command] CHAR(1) NOT NULL
 );
 
--- Populate the source code into CodeTable
+-- Populates the source code into the CodeTable.
 DECLARE @CodeLen INT = LEN(@Code);
 DECLARE @CodePos INT = 0;
 DECLARE @CodeChar CHAR(1);
@@ -25,13 +25,13 @@ BEGIN
         INSERT INTO @CodeTable ([Command]) VALUES (@CodeChar)
 END
 
--- Creates the Input table
+-- Creates the Input table.
 DECLARE @InputTable TABLE (
     [Id]   INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     [Char] CHAR(1) NOT NULL
 );
 
--- Populate the input text into InputTable
+-- Populates the input text into the InputTable.
 DECLARE @InputLen INT = LEN(@Input);
 DECLARE @InputPos INT = 0;
 
@@ -42,13 +42,13 @@ BEGIN
     VALUES (SUBSTRING(@Input, @InputPos, 1))
 END
 
--- Creates the Output table
+-- Creates the Output table.
 DECLARE @OutputTable TABLE (
     [Id]   INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     [Char] CHAR(1) NOT NULL
 );
 
--- Creates the Buffer table
+-- Creates the Buffer table.
 DECLARE @BufferTable TABLE (
     [Id]     INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     [Memory] INT DEFAULT 0  NOT NULL
