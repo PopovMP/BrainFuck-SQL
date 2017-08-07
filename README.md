@@ -14,4 +14,3 @@ Modification:
   - Set your BrainFuck code in line 3.
   - Set your input in line 4.
    
-  
